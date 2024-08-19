@@ -1,34 +1,7 @@
 use std::env;
-use std::error::Error;
-use std::fs;
 use std::process;
 
-struct Config {
-    query: String,
-    file_path: String,
-}
-
-impl Config {
-    fn parse_args(args: &[String]) -> Result<Config, String> {
-        if args.len() < 3 {
-            return Err(String::from("Not enough arguments"));
-        }
-
-        let query = args[1].clone();
-        let file_path = args[2].clone();
-
-        return Ok(Config { query, file_path });
-    }
-}
-
-fn run(config: Config) -> Result<(), Box<dyn Error>> {
-    let contents = fs::read_to_string(config.file_path)?;
-
-    print!("Text:");
-    print!("{contents}");
-
-    Ok(())
-}
+use minigrep::Config;
 
 fn main() {
     println!("Rust example of grep!");
@@ -42,7 +15,7 @@ fn main() {
     println!("Searching for: {}", config.query);
     println!("In file: {}", config.file_path);
 
-    if let Err(e) = run(config) {
+    if let Err(e) = minigrep::run(config) {
         println!("Application error: {e}");
         process::exit(1);
     }
