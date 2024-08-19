@@ -34,10 +34,8 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.file_path)?;
 
-    print!("Text:");
-    print!("{contents}");
-
     let search_result = search(&config.query, &contents);
+    println!("Results:");
     for line in search_result {
         println!("{}", line);
     }
