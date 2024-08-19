@@ -1,4 +1,5 @@
 use std::env;
+use std::fs;
 
 fn main() {
     println!("Rust example of grep!");
@@ -9,4 +10,9 @@ fn main() {
 
     println!("Searching for: {query}");
     println!("In file: {file_path}");
+
+    let contents = fs::read_to_string(file_path).expect("Something went wrong reading the file");
+
+    print!("Text:");
+    print!("{contents}");
 }
