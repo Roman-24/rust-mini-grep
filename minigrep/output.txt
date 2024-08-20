@@ -1,0 +1,7 @@
+Rust example of grep!
+Searching for: to
+In file: data/poem.txt
+Searching w case sensitive.
+Results:
+Are you nobody, too?
+How dreary to be somebody!
